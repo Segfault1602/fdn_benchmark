@@ -1,0 +1,6 @@
+add_library(steamaudio SHARED IMPORTED)
+target_sources(steamaudio INTERFACE IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/lib/osx/libphonon.dylib)
+target_include_directories(steamaudio INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_directories(steamaudio INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/lib/osx)
+target_link_libraries(steamaudio INTERFACE phonon)
+set_target_properties(steamaudio PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/lib/osx)

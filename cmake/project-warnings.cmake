@@ -1,7 +1,7 @@
 if(MSVC)
-  set(MYPROJECT_WARNINGS_CXX /W3 /permissive-)
+  set(FDNBENCH_WARNINGS_CXX /W3 /permissive-)
 elseif(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
-  set(MYPROJECT_WARNINGS_CXX
+  set(FDNBENCH_WARNINGS_CXX
       -Wall
       -Wextra
       -Wpedantic
@@ -11,3 +11,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
   )
 
 endif()
+
+add_library(fdnbench_warnings INTERFACE)
+add_library(fdnbench::fdnbench_warnings ALIAS fdnbench_warnings)
+target_compile_options(fdnbench_warnings INTERFACE ${FDNBENCH_WARNINGS_CXX})
